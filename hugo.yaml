@@ -1,4 +1,5 @@
 baseURL: https://franktian.top/
+title: "Frank Tian"
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 theme: PaperMod
@@ -47,6 +48,7 @@ languages:
           人工智能和机器人领域的理论探索与数学直觉分享。
 
 params:
+  author: "Frank Tian"
   env: production
   math: true
   comments: true
