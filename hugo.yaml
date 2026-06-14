@@ -1,0 +1,158 @@
+baseURL: https://franktian.top/
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+languages:
+  en:
+    locale: en-US
+    label: "English"
+    weight: 1
+    title: Frank Tian's Blog
+    params:
+      description: "Technical blog about machine learning, reinforcement learning, AI and robotics"
+      profileMode:
+        enabled: true
+        title: Frank Tian
+        subtitle: "Machine Learning · Reinforcement Learning · Robotics"
+        imageUrl: /img/avatar.jpg
+      homeInfoParams:
+        Title: "Hi, I'm Frank Tian \U0001F44B"
+        Content: >
+          Welcome to my technical blog. I write about machine learning,
+          reinforcement learning, artificial intelligence, and robotics —
+          with a focus on theoretical foundations and mathematical intuition.
+
+  zh:
+    locale: zh-CN
+    label: "中文"
+    weight: 2
+    title: Frank Tian 的技术博客
+    params:
+      description: "机器学习、强化学习、人工智能与机器人技术博客"
+      profileMode:
+        enabled: true
+        title: Frank Tian
+        subtitle: "机器学习 · 强化学习 · 机器人"
+        imageUrl: /img/avatar.jpg
+      homeInfoParams:
+        Title: "你好，我是 Frank Tian \U0001F44B"
+        Content: >
+          欢迎来到我的技术博客。我专注于机器学习、强化学习、
+          人工智能和机器人领域的理论探索与数学直觉分享。
+
+params:
+  env: production
+  math: true
+  comments: true
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  TocOpen: true
+  UseHugoToc: true
+  ShowFullTextinRSS: false
+  disableSpecialistPost: false
+  disableScrollToTop: false
+  hideMeta: false
+  hideSummary: false
+
+  label:
+    text: "Home"
+    icon: /img/avatar.jpg
+    iconHeight: 35
+
+  mainSections:
+    - posts
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/franktiantt"
+    - name: x-twitter
+      url: "https://x.com/franktian424"
+    - name: zhihu
+      url: "https://www.zhihu.com/people/franktian424"
+    - name: bilibili
+      url: "https://space.bilibili.com/11914211"
+    - name: email
+      url: "mailto:franktian424@qq.com"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+
+  giscus:
+    repo: "franktiantt/franktiantt.github.io"
+    repoId: ""
+    category: "General"
+    categoryId: ""
+    mapping: "pathname"
+    reactionsEnabled: 1
+    emitMetadata: 0
+    inputPosition: "bottom"
+    lightTheme: "light"
+    darkTheme: "dark_dimmed"
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [["$$", "$$"], ["\\[", "\\]"]]
+          inline: [["$", "$"], ["\\(", "\\)"]]
+      typographer:
+        disable: true
+  highlight:
+    style: dracula
+    noClasses: false
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+permalinks:
+  posts: /posts/:slug/
+
+menu:
+  main:
+    - name: Posts
+      url: /posts/
+      weight: 10
+    - name: Search
+      url: /search/
+      weight: 20
+    - name: Tags
+      url: /tags/
+      weight: 30
+    - name: Archives
+      url: /archives/
+      weight: 40
+    - name: About
+      url: /about/
+      weight: 50

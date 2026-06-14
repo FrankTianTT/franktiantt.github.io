@@ -1,0 +1,36 @@
+{{- $scratch := newScratch }}
+{{- $lang := .Language.Lang }}
+
+{{- if not .Date.IsZero -}}
+    {{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat)))) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+    {{- if eq $lang "zh" }}
+        {{- $charCount := .Plain | countrunes }}
+        {{- $readingTime := div $charCount 400 }}
+        {{- if lt $readingTime 1 }}{{ $readingTime = 1 }}{{ end }}
+        {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" $readingTime))) }}
+    {{- else }}
+        {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime)))) }}
+    {{- end }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+    {{- if eq $lang "zh" }}
+        {{- $charCount := .Plain | countrunes }}
+        {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "words" $charCount))) }}
+    {{- else }}
+        {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "words" .WordCount | default (printf "%d words" .WordCount)))) }}
+    {{- end }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+    {{- with (partial "author.html" .) }}
+        {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" .)) }}
+    {{- end }}
+{{- end }}
+
+{{- with ($scratch.Get "meta") }}
+    {{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}
